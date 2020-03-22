@@ -13,7 +13,7 @@ The project is a REST API, which allows you to perform the following actions:
   If account currencies are different use the conversion formula
 - view a list of all transactions on your account
 - update currency rates from a third-party resource (e.g. exchangeratesapi.io ) once in N time (e.g. once in 3 minutes)
-   The system must support the following currencies: EUR, USD, GPB, RUB.
+   The system must support the following currencies: EUR, USD, GBP, RUB.
 
 ### System Requirements
 - the system must be implemented on any python framework of your choice: Django, Flask, aiohttp, Sanic, Bottle etc.
