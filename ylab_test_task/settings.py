@@ -31,7 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'ylab_test_task.users',
+    'ylab_test_task.money_transfer',
+    # additional apps
     'djmoney',
+    'djmoney.contrib.exchange',
     # default apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -105,6 +109,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'users.User'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -124,3 +130,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CURRENCIES = ('USD', 'EUR', 'GPB', 'RUB')
+CURRENCY_CHOICES = [
+    ('USD', 'USD $'),
+    ('EUR', 'EUR €'),
+    ('GBP', 'GPB £'),
+    ('RUB', 'RUB ₽'),
+]
+
+EXCHANGE_BACKEND = 'djmoney.contrib.exchange.backends.FixerBackend'
+FIXER_URL = 'https://api.exchangeratesapi.io/latest/'
+FIXER_ACCESS_KEY = 'no-key-needed'
