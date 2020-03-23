@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
             name='Transaction',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('amount_currency', djmoney.models.fields.CurrencyField(choices=[('EUR', 'EUR €'), ('GBP', 'GPB £'), ('RUB', 'RUB ₽'), ('USD', 'USD $')], default='USD', editable=False, max_length=3)),
+                ('amount_currency', djmoney.models.fields.CurrencyField(choices=[('EUR', 'EUR €'), ('GBP', 'GBP £'), ('RUB', 'RUB ₽'), ('USD', 'USD $')], default='USD', editable=False, max_length=3)),
                 ('amount', djmoney.models.fields.MoneyField(decimal_places=2, default_currency='USD', max_digits=14, verbose_name='Amount of money sent')),
                 ('from_user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='transactions_out', to=settings.AUTH_USER_MODEL, verbose_name='From user')),
                 ('to_user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='transactions_in', to=settings.AUTH_USER_MODEL, verbose_name='To user')),

@@ -137,11 +137,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-CURRENCIES = ('USD', 'EUR', 'GPB', 'RUB')
+CURRENCIES = ('USD', 'EUR', 'GBP', 'RUB')
 CURRENCY_CHOICES = [
     ('USD', 'USD $'),
     ('EUR', 'EUR €'),
-    ('GBP', 'GPB £'),
+    ('GBP', 'GBP £'),
     ('RUB', 'RUB ₽'),
 ]
 
