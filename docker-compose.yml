@@ -6,6 +6,8 @@ services:
     restart: always
     environment:
       POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
   migration:
     build: .
     command: python manage.py migrate --noinput
@@ -24,3 +26,6 @@ services:
     depends_on:
       - db
       - migration
+
+volumes:
+  postgres_data:
