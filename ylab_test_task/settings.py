@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'ylab_test_task.users',
     'ylab_test_task.money_transfer',
     # additional apps
+    'rest_framework',
     'djmoney',
     'djmoney.contrib.exchange',
     # default apps
@@ -54,6 +55,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
 
 ROOT_URLCONF = 'ylab_test_task.urls'
 

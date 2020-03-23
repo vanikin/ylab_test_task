@@ -1,6 +1,7 @@
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.db import models
 from django.utils.translation import gettext as _
+from djmoney.contrib.exchange.models import convert_money
 from djmoney.models.fields import MoneyField
 from djmoney.models.managers import money_manager
 from djmoney.money import Money
@@ -61,6 +62,13 @@ class User(AbstractBaseUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = money_manager(UserManager())
+
+    def balance_change(self, amount):
+        if amount.currency == self.balance.currency:
+            self.balance += amount
+        else:
+            self.balance += convert_money(amount, self.balance.currency)
+        self.save()
 
     @property
     def is_staff(self):
