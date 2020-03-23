@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import gettext as _
 from djmoney.models.fields import MoneyField
 
@@ -22,3 +23,12 @@ class Transaction(models.Model):
         decimal_places=2,
         default_currency='USD'
     )
+    date = models.DateTimeField(
+        _('Transaction time'),
+        default=timezone.now,
+        editable=False,
+        db_index=True
+    )
+
+    class Meta:
+        ordering = ('-date', )
