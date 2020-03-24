@@ -10,7 +10,7 @@ services:
       - postgres_data:/var/lib/postgresql/data/
   migration:
     build: .
-    command: python manage.py migrate --noinput
+    command: bash -c "python manage.py migrate --noinput && python manage.py update_rates"
     volumes:
       - .:/code
     depends_on:
