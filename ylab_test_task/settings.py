@@ -145,7 +145,9 @@ CURRENCY_CHOICES = [
     ('GBP', 'GBP £'),
     ('RUB', 'RUB ₽'),
 ]
-
+BASE_CURRENCY = 'USD'
 EXCHANGE_BACKEND = 'djmoney.contrib.exchange.backends.FixerBackend'
-FIXER_URL = 'https://api.exchangeratesapi.io/latest/'
+FIXER_URL = 'https://api.exchangeratesapi.io/latest?base={}&symbols={}'.format(
+    BASE_CURRENCY, ','.join([c for c in CURRENCIES if c != BASE_CURRENCY])
+)
 FIXER_ACCESS_KEY = 'no-key-needed'
