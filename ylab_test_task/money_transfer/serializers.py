@@ -41,4 +41,7 @@ class TransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaction
         fields = ['from_user', 'to_user', 'amount', 'amount_currency', 'date']
-        extra_kwargs = {'from_user': {'required': False}}
+        extra_kwargs = {
+            'from_user': {'required': False},
+            'amount': {'required': True}
+        }
