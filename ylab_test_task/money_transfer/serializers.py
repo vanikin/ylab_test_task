@@ -1,7 +1,7 @@
 from django.db import transaction
 from djmoney.money import Money
 from rest_framework import serializers
-
+from django.conf import settings
 
 from .models import Transaction
 
@@ -18,7 +18,7 @@ class TransactionSerializer(serializers.ModelSerializer):
 
         if not attrs.get('from_user'):
             attrs['from_user'] = user
-        elif attrs['from_user'] != user and not user.is_admin:
+        elif attrs['from_user'] != user and not user.is_superuser:
             raise serializers.ValidationError("Operation not allowed")
 
         if attrs['from_user'] == attrs['to_user']:
