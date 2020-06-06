@@ -1,6 +1,6 @@
 asgiref==3.2.5
 certifi==2019.11.28
-Django==3.0.4
+Django==3.0.7
 django-money==1.0
 djangorestframework==3.11.0
 psycopg2==2.8.4
